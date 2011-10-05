@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% load url from future %}
+{% block head %}
+<script type="text/javascript" src="{{ STATIC_URL }}js/home.js"></script>
+{% endblock %}
+
+{% block content %}
+
+<div class="hero-unit" style="margin-left: auto; margin-right: auto">
+	<form action="{% url 'home' %}" class="form-stacked" id="qr_form">
+	{% csrf_token %}
+	<fieldset>
+		<div class="row clearfix">
+			<div class="span13 offset3" style="margin-bottom: 10px">
+				<h1 class="hero-header">Create Your QR Code</h1> 
+			</div>
+		</div>
+		<div class="row clearfix" style="margin-left: -30px">
+			<div class="span3" style="font-size: 11px; color: #555">
+				<div class="row clearfix">
+					<div class="span3"><h6 style="margin-top: -10px;">Examples</h6></div>
+				</div>
+				<div class="row clearfix">        
+					<div class="span1"><span class="label success">Website</span></div>
+					<div class="span2">http://example.com</strong></div>
+				</div>
+				<div class="row clearfix">		  
+					<div class="span1"><span class="label important">Email</span></div>
+					<div class="span2">user@gmail.com</div>
+				</div>		
+				<div class="row clearfix">		  
+					<div class="span1"><span class="label notice">Twitter</span></div>
+					<div class="span2">@adamcoomes</div>
+				</div>
+				<div class="row clearfix">		  
+					<div class="span1"><span class="label">Text</span></div>
+					<div class="span2">Thanks for scanning</div>
+				</div>
+			</div>
+			<div class="span13">
+				<textarea id="qrcode" class="span10" style="height: 100px; font-size: 22px; padding: 10px; margin-left: 10px" type="text" placeholder="Enter URL, Email, Twitter Handle, etc" ></textarea>
+			</div>	
+		</div>
+		<div class="row">
+			<div class="span8 offset3">
+				<input id="qrname" class="span8" style="height: 10px; font-size: 16px; padding: 10px;" type="text" placeholder="Enter a Name for this QR Code (Optional)">
+				<input id="qrlast" type="hidden" value="">
+			</div>
+			<div class="span4">
+				<input id="qrsubmit" class="btn primary" style="width: 110px; height: 30px" type="submit" value="Create">
+			</div>
+		</div>
+	</fieldset>
+	</form>
+</div>
+<div class="alert-message" style="display: none">
+	<a class="close" href="#">×</a>
+	<p></p>
+</div>
+<div id="qr" style="margin-left: auto; margin-right: auto; display: none">
+	<table id="qr_table" class="zebra-striped">
+		<thead>
+			<tr>
+				<th>QR Code Link</th>
+				<th>Type</th>
+				<th>Options</th>
+			</tr>
+		</thead>
+		<tbody id="qr_row">
+		</tbody>
+	</table>
+</div>
+{% endblock %}

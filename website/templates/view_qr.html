@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load url from future %}
+{% load qr_tags %}
+{% block content %}
+<div class="row span10">
+	<div class="span10 offset2" style="margin-top: 60px">
+		<div class="row span7 offset2">
+			<ul class="pills" style="margin-bottom: 0px; margin-left: 10px;">
+				<li{% if size == 'l' or not size %} class="active"{% endif %}><a href="{{ qr.get_absolute_url }}?size=l">Large</a></li>
+				<li{% if size == 'm' %} class="active"{% endif %}><a href="{{ qr.get_absolute_url }}?size=m">Medium</a></li>
+				<li{% if size == 's' %} class="active"{% endif %}><a href="{{ qr.get_absolute_url }}?size=s">Small</a></li>
+			</ul>
+		</div>
+		<div class="row span7 offset2" {% if size == 'l' %} style="margin-left: 80px" {% endif %} {% if size == 's' %} style="padding-left: 55px; padding-top: 15px" {% endif %}>
+			{% if not contact %}
+				{% if type != "e" %}
+					{% qr_from_text qr.text size %}
+				{% else %}
+					{% qr_from_mail qr.text size %}
+				{% endif %}
+			{% endif %}
+		</div>
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,36 @@
+body * {
+	font-family: 'Trebuchet MS', Helvetica, sans-serif;
+}
+
+html {
+	height: 100%;
+}
+
+body {
+	height: 100%;
+	
+
+}
+
+.hero-unit {
+	margin-top: 50px;
+	padding: 10px;
+	background: url('/static/images/background.jpg') fixed repeat;
+	border: 1px solid #EEE;
+}
+
+.hero-header {
+
+}
+
+
+/*
+html { background: #d4e4ff;}
+
+body { 
+    background-repeat: no-repeat;
+    background: #cbccc8;
+    background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#d4e4ff));
+    background: -moz-linear-gradient(top,  #fff,  #d4e4ff);
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#d4e4ff'); }
+*/
